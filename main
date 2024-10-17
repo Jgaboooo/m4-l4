@@ -30,13 +30,15 @@ class Card(db.Model):
 
 #Asignación #2. Crear la tabla Usuario
 
-
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
-    login = db.Column(db.String(100), nullable=False )
+    login = db.Column(db.String(100), nullable=False)
 
-    password = db.Column(db.String(10), nullable=False )
+    password = db.Column(db.String(8), nullable=False)
+
+
+
 
 
 
@@ -51,17 +53,20 @@ def login():
             form_password = request.form['password']
             
             #Asignación #4. Aplicar la autorización
-            users_db = User.query.all()
-            for user in users_db:
+            user_db = User.query.all()
+
+            for user in user_db:
+
                 if form_login == user.login and form_password == user.password:
                     return redirect('/index')
                 else:
-                    error = "tu usuario y/o contraseña son incorrecto"
+                    error = 'tu usario y/o contraseña no coincide'
                     return render_template('login.html', error=error)
-   
+
 
             
-
+        else:
+            return render_template('login.html')
 
 
 
@@ -76,6 +81,7 @@ def reg():
         db.session.add(user)
         db.session.commit()
 
+        
         return redirect('/')
     
     else:    
@@ -119,6 +125,11 @@ def form_create():
         return render_template('create_card.html')
 
 
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
 
 
 
