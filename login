@@ -26,9 +26,9 @@
             <label for="password">
               <input class="form__input" type="password" name="password" id="password" placeholder="Introduzca su contraseña" required>
             </label>
-               <!--  -->
-               <button class="form__button">Iniciar sesión</button>
-               <a href="/reg" class="form__button reg__link">Registrarse</a>
+            <!--  -->
+                <button class="form__button">Iniciar sesión</button>
+                <a href="/reg" class="form__button reg__link">Registrarse</a>
         </form>
         {% endblock %}
       </main>
